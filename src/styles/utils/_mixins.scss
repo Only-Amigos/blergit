@@ -1,0 +1,20 @@
+// Media breakpoint helper based on breakpoints below
+// Credit: http://css-tricks.com/conditional-media-query-mixins/
+@mixin bp($point) {
+  @if $point == m {
+    @media #{$screen-m} { @content; }
+  } @else if $point == l {
+    @media #{$screen-l} { @content; }
+  } @else if $point == xl {
+    @media #{$screen-xl} { @content; }
+  }
+}
+// Media Query Breakpoints
+// Small devices (phones, and Nexus tablets in portrait less than 605px)
+// (No media query since this is mobile-first)
+// Medium devices (tablets, 600px and up)
+$screen-m: '(min-width: 600px)';
+// Large devices (desktops, 1024px and up)
+$screen-l: '(min-width: 1024px)';
+// Extra-large devices (4k monitors, 1440px and up)
+$screen-xl: '(min-width: 1440px)';
