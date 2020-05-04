@@ -6,7 +6,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        HEADER
         <Route exact path="/">
           <div className="App">
             <h1>HELLO</h1>
