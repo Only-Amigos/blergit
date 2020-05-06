@@ -21,8 +21,10 @@ class App extends Component {
 
   render() {
     return (
-      <h1>HELLO</h1>
-    )
+      <div>
+        <h1>Blergit</h1>
+      </div>
+    );
   }
 }
 
