@@ -2,21 +2,33 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../store/actions/postsActions';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 // import {db} from '../firebase';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      id: 4,
-      title: 'Post numero four',
-      content: 'Lorrrrrrrrrrrremmmmmmmmm Ipso Facto',
-     posts: []
+      title: '',
+      content: ''
     };
-  }
+  };
 
-  componentDidMount() {
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
     this.props.createPost(this.state);
+  };
+  componentDidMount() {
+
+    // this.props.createPost(this.state);
+
     // db.collection('posts')
     //   .get()
     //   .then(querySnapshot => {
@@ -32,8 +44,13 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <h1>Blergit</h1>
-
           <h3>Posts:</h3>
+
+          <form onSubmit={this.handleSubmit} className="new-post-form">
+            <input onChange={this.handleInputChange} type="text" id='title'/>
+            <textarea onChange={this.handleInputChange} id="content" cols="50" rows="10"></textarea>
+            <button>SUBMIT</button>
+          </form>
 
           <ul>
             {this.props.posts.map(post => {
@@ -53,7 +70,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts.posts
+    posts: state.firestore.ordered.posts || state.posts.posts
   }
 };
 
@@ -63,4 +80,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (App);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([
+    {collection: 'posts'}
+  ])
+)(App)

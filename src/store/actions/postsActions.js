@@ -5,8 +5,6 @@ export const createPost = (post) => {
 
     firestore.collection('posts').add({
       ...post,
-      title: 'From postActions',
-      content: 'I am from postActions.js',
       createdAt: new Date()
     }).then(() => {
       dispatch({
