@@ -12,11 +12,11 @@ export const createPost = (post) => {
       dispatch({
         type: 'CREATE_POST',
         payload: post
-      }).catch((err) => {
-        dispatch({
-          type: 'CREATE_POST_ERROR',
-          err
-        })
+      })
+    }).catch((err) => {
+      dispatch({
+        type: 'CREATE_POST_ERROR',
+        err
       })
     });
   }
