@@ -1,3 +1,7 @@
 @import './utils/mixins';
 @import './utils/colors';
 @import './utils/typography';
+
+// Components
+@import './Navbar.scss';
+@import './CreatePost';
