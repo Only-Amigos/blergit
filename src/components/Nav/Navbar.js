@@ -5,22 +5,30 @@ class Navbar extends Component {
   render() {
     return (
       <header>
-        <a href="/">
-          <h1>Blergit</h1>
-        </a>
+        <nav className='navbar' role='navigation' aria-label='main navigation'>
+          <div className="navbar-brand">
+            <div className="navbar-item">
+              <a href='/'>
+                <h1 className='title'>Blergit</h1>
+              </a>
+            </div>
+          </div>
 
-        <nav>
-          <ul className="main-nav">
-            <li className="main-nav__item">
-              <Link to='/create-post'>New Post</Link>
-            </li>
-            <li className="main-nav__item">
-              <Link to='/profile'>Profile</Link>
-            </li>
-            <li className="main-nav__item">
-              <Link to='/about'>About</Link>
-            </li>
-          </ul>
+          <div className="navbar-menu">
+            <div className="navbar-start">
+              <div className="navbar-item">
+                <Link to='/create-post'>New Post</Link>
+              </div>
+
+              <div className="navbar-item">
+                <Link to='/profile'>Profile</Link>
+              </div>
+
+              <div className="navbar-item">
+                <Link to='/about'>About</Link>
+              </div>
+            </div>
+          </div>
         </nav>
       </header>
     )

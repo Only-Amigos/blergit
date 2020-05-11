@@ -12,9 +12,12 @@ import App from './components/App';
 import rootReducer from './store/reducers/rootReducer';
 import * as serviceWorker from './serviceWorker';
 
+// composeEnhancers for using Redux DevTool Extension
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   rootReducer,
-  compose(applyMiddleware(thunk.withExtraArgument({
+  composeEnhancers(applyMiddleware(thunk.withExtraArgument({
       getFirebase,
       getFirestore
     })),
