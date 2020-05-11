@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { createPost } from '../store/actions/postsActions';
+import { createPost, deletePost } from '../store/actions/postsActions';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import 'bulma/css/bulma.css';
@@ -18,6 +18,10 @@ import Profile from './Profile/Profile';
 import About from './About/About';
 
 class App extends Component {
+  handleDeletePost = (id) => {
+    this.props.deletePost(id);
+  };
+
     render() {
     // console.log(this.props.posts[0])
     return (
@@ -45,6 +49,7 @@ class App extends Component {
                 <li key={post.id}>
                   <h4>{post.title}</h4>
                   <p>{post.content}</p>
+                  <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
                 </li>
               )
             })}
@@ -63,7 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post) => dispatch(createPost(post))
+    createPost: (post) => dispatch(createPost(post)),
+    deletePost: (id) => dispatch(deletePost(id))
   }
 }
 
