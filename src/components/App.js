@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import { createPost } from '../store/actions/postsActions';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import 'bulma/css/bulma.css';
+import '../styles/main.scss';
 
 import Navbar from './Nav/Navbar';
 import CreatePost from './CreatePost/CreatePost';

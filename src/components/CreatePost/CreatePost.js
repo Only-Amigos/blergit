@@ -33,10 +33,12 @@ class CreatePost extends Component {
       <div>
         <h1>Welcome to the CreatePost page</h1>
 
-        <form onSubmit={this.handleSubmit} className="new-post-form">
-          <input onChange={this.handleInputChange} type="text" id='title'/>
-          <textarea onChange={this.handleInputChange} id="content" cols="50" rows="10"></textarea>
-          <button>SUBMIT</button>
+        <form onSubmit={this.handleSubmit} className='new-post-form'>
+          <input onChange={this.handleInputChange} type='text' id='title'/>
+          <textarea onChange={this.handleInputChange} id='content' cols='50' rows='10'></textarea>
+          <div className='control'>
+            <button className='button'>SUBMIT</button>
+          </div>
         </form>
       </div>
     )
