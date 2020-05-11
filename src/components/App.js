@@ -22,7 +22,7 @@ class App extends Component {
     this.props.deletePost(id);
   };
 
-    render() {
+  render() {
     // console.log(this.props.posts[0])
     return (
       <Router>

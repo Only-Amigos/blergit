@@ -14,6 +14,7 @@ import * as serviceWorker from './serviceWorker';
 
 // composeEnhancers for using Redux DevTool Extension
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk.withExtraArgument({
