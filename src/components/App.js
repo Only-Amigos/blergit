@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Link
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -14,6 +15,7 @@ import '../styles/main.scss';
 
 import Navbar from './Nav/Navbar';
 import CreatePost from './CreatePost/CreatePost';
+import Posts from './Posts/Posts';
 import Post from './Posts/Post';
 import Profile from './Profile/Profile';
 import About from './About/About';
@@ -31,15 +33,11 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-            <Route path='/about'>
-              <About />
-            </Route>
-            <Route path='/profile'>
-              <Profile />
-            </Route>
-            <Route path='/create-post'>
-              <CreatePost />
-            </Route>
+            <Route path='/about' component={About} />
+            <Route path='/profile'component={Profile} />
+            <Route path='/create-post' component={CreatePost} />
+            {/* <Route path='/posts/' component={Posts} /> */}
+            <Route path='/posts/:id' component={Post} />
           </Switch>
 
           <h3>Posts:</h3>
@@ -47,7 +45,11 @@ class App extends Component {
           <ul>
             {this.props.posts.map(post => {
               return (
-                <Post post={post} key={post.id} />
+                // <Route path='/posts/:id'>
+                <Link to={`/posts/${post.id}`} key={post.id}>
+                  <Post post={post} />
+                </Link>
+                // </Route>
                 // <li key={post.id}>
                 //   <h4>{post.title}</h4>
                 //   <p>{post.content}</p>

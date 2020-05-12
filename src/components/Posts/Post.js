@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { createPost } from '../../store/actions/postsActions';
-// import { firestoreConnect } from 'react-redux-firebase';
-// import { compose } from 'redux';
+import { useRouteMatch } from 'react-router-dom';
 
 class Post extends Component {
   render() {
     // console.log(this.props.post);
+    console.log(useRouteMatch);
     return (
       <li>
         <h4>{this.props.post.title}</h4>
