@@ -14,6 +14,7 @@ import '../styles/main.scss';
 
 import Navbar from './Nav/Navbar';
 import CreatePost from './CreatePost/CreatePost';
+import Post from './Posts/Post';
 import Profile from './Profile/Profile';
 import About from './About/About';
 
@@ -46,11 +47,12 @@ class App extends Component {
           <ul>
             {this.props.posts.map(post => {
               return (
-                <li key={post.id}>
-                  <h4>{post.title}</h4>
-                  <p>{post.content}</p>
-                  <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
-                </li>
+                <Post post={post} key={post.id} />
+                // <li key={post.id}>
+                //   <h4>{post.title}</h4>
+                //   <p>{post.content}</p>
+                //   <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
+                // </li>
               )
             })}
           </ul>

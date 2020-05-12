@@ -23,8 +23,8 @@ class CreatePost extends Component {
     e.preventDefault();
     this.props.createPost(this.state);
   };
-  componentDidMount() {
 
+  componentDidMount() {
     // this.props.createPost(this.state);
   }
 
