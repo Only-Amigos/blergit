@@ -14,13 +14,12 @@ import '../styles/main.scss';
 
 import Navbar from './Nav/Navbar';
 import CreatePost from './CreatePost/CreatePost';
+import PostList from './PostList/PostList';
+import Post from './PostList/Post';
 import Profile from './Profile/Profile';
 import About from './About/About';
 
 class App extends Component {
-  handleDeletePost = (id) => {
-    this.props.deletePost(id);
-  };
 
   render() {
     // console.log(this.props.posts[0])
@@ -30,30 +29,13 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-            <Route path='/about'>
-              <About />
-            </Route>
-            <Route path='/profile'>
-              <Profile />
-            </Route>
-            <Route path='/create-post'>
-              <CreatePost />
-            </Route>
+            <Route exact path='/' component={PostList} />
+            <Route path='/about' component={About} />
+            <Route path='/profile'component={Profile} />
+            <Route path='/create-post' component={CreatePost} />
+            <Route exact path='/posts/' component={PostList} />
+            <Route path='/posts/:id' component={Post} />
           </Switch>
-
-          <h3>Posts:</h3>
-
-          <ul>
-            {this.props.posts.map(post => {
-              return (
-                <li key={post.id}>
-                  <h4>{post.title}</h4>
-                  <p>{post.content}</p>
-                  <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
-                </li>
-              )
-            })}
-          </ul>
         </div>
       </Router>
     );
