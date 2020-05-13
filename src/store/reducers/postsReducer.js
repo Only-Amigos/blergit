@@ -1,9 +1,5 @@
 const initialState = {
-  posts: [
-    {id: 1, title: 'Title one', content: 'Some content lorem ipsum'},
-    {id: 2, title: 'Title two', content: 'Some more content lorem ipsum'},
-    {id: 3, title: 'Title three', content: 'Yet more content lorem ipsum'}
-  ]
+  posts: []
 };
 
 const postReducer = (state = initialState, action) => {

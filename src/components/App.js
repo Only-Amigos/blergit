@@ -33,11 +33,18 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-            <Route path='/about' component={About} />
-            <Route path='/profile'component={Profile} />
-            <Route path='/create-post' component={CreatePost} />
-            {/* <Route path='/posts/' component={Posts} /> */}
-            <Route path='/posts/:id' component={Post} />
+            <Route path='/about'>
+              <About />
+            </Route>
+            <Route path='/profile'>
+              <Profile />
+            </Route>
+            <Route path='/create-post'>
+              <CreatePost />
+            </Route>
+            <Route path='/posts/:id'>
+              <Post />
+            </Route>
           </Switch>
 
           <h3>Posts:</h3>
