@@ -34,3 +34,4 @@ export default compose(
     {collection: 'posts'}
   ])
 )(Post)
+

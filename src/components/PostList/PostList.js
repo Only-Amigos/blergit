@@ -12,24 +12,23 @@ class PostList extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Posts:</h3>
-
-        <ul>
+      <div className="postlist">
+        <h3 className="has-text-centered is-size-4">Posts:</h3>
+        <div className="postlist-wrap">
           {this.props.posts && this.props.posts.map(post => {
             return (
-              <div key={post.id}>
+              <div className="box postlist-post" key={post.id}>
                 <Link to={`/posts/${post.id}`}>
-                  <li key={post.id}>
+                  <div key={post.id}>
                    <h4>{post.title}</h4>
                    <p>{post.content}</p>
-                 </li>
+                 </div>
                 </Link>
                 <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
               </div>
             )
           })}
-        </ul>
+        </div>
       </div>
     )
   }
