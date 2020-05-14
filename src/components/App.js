@@ -25,18 +25,19 @@ class App extends Component {
     // console.log(this.props.posts[0])
     return (
       <Router>
-        <div>
-          <Navbar />
-
-          <Switch>
-            <Route exact path='/' component={PostList} />
-            <Route path='/about' component={About} />
-            <Route path='/profile'component={Profile} />
-            <Route path='/create-post' component={CreatePost} />
-            <Route exact path='/posts/' component={PostList} />
-            <Route path='/posts/:id' component={Post} />
-          </Switch>
-        </div>
+        <Navbar />
+        <section className="section">
+          <div className="container">
+            <Switch>
+                <Route exact path='/' component={PostList} />
+                <Route path='/about' component={About} />
+                <Route path='/profile'component={Profile} />
+                <Route path='/create-post' component={CreatePost} />
+                <Route exact path='/posts/' component={PostList} />
+                <Route path='/posts/:id' component={Post} />
+            </Switch>
+          </div>
+        </section>
       </Router>
     );
   }

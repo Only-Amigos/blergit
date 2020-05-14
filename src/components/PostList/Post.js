@@ -7,7 +7,7 @@ const Post = (props) => {
   const { post } = props;
   if (post) {
     return (
-      <li>
+      <li className="post">
         <h4>{post.title}</h4>
         <p>{post.content}</p>
       </li>
