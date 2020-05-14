@@ -6,3 +6,11 @@
 @import './Navbar';
 @import './CreatePost';
 @import './PostList';
+
+html {
+  scrollbar-width: none;
+
+  @include bp(l) {
+    scrollbar-width: thin;
+  }
+}

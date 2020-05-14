@@ -1,5 +1,33 @@
 header {
+  box-shadow: 0 5px 10px #999;
+
   .title {
     font-weight: 300;
+  }
+
+  .navbar-burger {
+    .burger-dropdown {
+      background-color: #E0EFF1;
+      border-radius: 0 0 0 5px;
+      border-top: 5px solid #2C3B63;
+      padding: 0 10px;
+      position: absolute;
+      right: 0;
+      top: 52px; //Height of burger; adjust if necessary
+      width: 35vw;
+
+      @include bp(m) {
+        width: 25vw;
+      }
+
+      li {
+        border-bottom: 1px solid #555;
+        padding: 10px 0;
+      }
+
+      li:last-child {
+        border: none;
+      }
+    }
   }
 }
