@@ -7,7 +7,7 @@ const Post = (props) => {
   const { post } = props;
   if (post) {
     return (
-      <li className="post">
+      <li>
         <h4>{post.title}</h4>
         <p>{post.content}</p>
       </li>
@@ -34,3 +34,4 @@ export default compose(
     {collection: 'posts'}
   ])
 )(Post)
+
