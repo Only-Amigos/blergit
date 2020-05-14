@@ -18,13 +18,15 @@ class PostList extends Component {
         <ul>
           {this.props.posts && this.props.posts.map(post => {
             return (
-              <Link to={`/posts/${post.id}`} key={post.id}>
-                <li key={post.id}>
-                 <h4>{post.title}</h4>
-                 <p>{post.content}</p>
-                 <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
-               </li>
-              </Link>
+              <div key={post.id}>
+                <Link to={`/posts/${post.id}`}>
+                  <li key={post.id}>
+                   <h4>{post.title}</h4>
+                   <p>{post.content}</p>
+                 </li>
+                </Link>
+                <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
+              </div>
             )
           })}
         </ul>
