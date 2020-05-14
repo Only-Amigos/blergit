@@ -14,16 +14,18 @@ class PostList extends Component {
     return (
       <div className="postlist">
         <h3 className="has-text-centered is-size-4">Posts:</h3>
-        <div className="postlist-posts">
+        <div className="postlist-wrap">
           {this.props.posts && this.props.posts.map(post => {
             return (
-              <Link className="box postlist-post" to={`/posts/${post.id}`} key={post.id}>
-                <div key={post.id}>
-                  <h4 className="">{post.title}</h4>
-                  <p>{post.content}</p>
-                  <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
-                </div>
-              </Link>
+              <div className="box postlist-post" key={post.id}>
+                <Link to={`/posts/${post.id}`}>
+                  <div key={post.id}>
+                   <h4>{post.title}</h4>
+                   <p>{post.content}</p>
+                 </div>
+                </Link>
+                <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
+              </div>
             )
           })}
         </div>
