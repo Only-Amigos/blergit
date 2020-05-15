@@ -22,13 +22,13 @@ class Navbar extends Component {
       mobileNavMenu = (
         <ul className='burger-dropdown'>
           <li>
-            <Link to='/create-post'>New Post</Link>
+            <Link className='is-size-6 has-text-grey-dark' to='/create-post'>New Post</Link>
           </li>
           <li>
-            <Link to='/profile'>Profile</Link>
+            <Link className='is-size-6 has-text-grey-dark' to='/profile'>Profile</Link>
           </li>
           <li>
-            <Link to='/about'>About</Link>
+            <Link className='is-size-6 has-text-grey-dark' to='/about'>About</Link>
           </li>
         </ul>
       )

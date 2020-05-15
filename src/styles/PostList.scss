@@ -4,12 +4,12 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 5%;
-  
-  .postlist-post {
-    width: 100%; 
-    
-    @include bp(m) {
-      width: 30%;
-    }
-  }
+
+  // .postlist-post {
+  //   width: 100%;
+
+  //   @include bp(m) {
+  //     width: 30%;
+  //   }
+  // }
 }
