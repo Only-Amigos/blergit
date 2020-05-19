@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { createPost } from '../../store/actions/postsActions';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -11,7 +12,8 @@ class CreatePost extends Component {
       title: '',
       titleValue: '',
       content: '',
-      contentValue: ''
+      contentValue: '',
+      postDate: ''
     };
   };
 
@@ -26,14 +28,12 @@ class CreatePost extends Component {
     e.preventDefault();
     this.setState({
       titleValue: '',
-      contentValue: ''
+      contentValue: '',
+      postDate: firebase.firestore.FieldValue.serverTimestamp()
     });
+
     this.props.createPost(this.state);
   };
-  componentDidMount() {
-
-    // this.props.createPost(this.state);
-  }
 
   render() {
     return (
