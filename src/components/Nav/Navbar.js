@@ -45,7 +45,7 @@ class Navbar extends Component {
             </div>
 
             {/* Hamburger menu */}
-            <a role='button' class='navbar-burger'
+            <a role='button' className='navbar-burger'
             aria-label='menu'
             aria-expanded={this.state.menuViz}
             onClick={this.handleMenuVizClick}>

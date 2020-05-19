@@ -2,10 +2,14 @@ const createPost = (post) => {
   return (dispatch, getState, {getFirebase, getFirestore}) => {
     //Make async call(s) to DB
     const firestore = getFirestore();
+    const computerDate = new Date();
+    const readableDate = computerDate.toLocaleDateString();
+    const readableTime = computerDate.toLocaleTimeString();
+    // console.log(`${readableTime} on ${readableDate}`);
 
     firestore.collection('posts').add({
       ...post,
-      createdAt: new Date()
+      createdAt: `${readableTime} on ${readableDate}`
     }).then(() => {
       dispatch({
         type: 'CREATE_POST',

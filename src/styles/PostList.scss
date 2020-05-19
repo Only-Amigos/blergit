@@ -5,11 +5,33 @@
   justify-content: space-between;
   margin-top: 5%;
 
-  // .postlist-post {
-  //   width: 100%;
+  .postlist-post {
+    flex-basis: auto; //Without this, posts appear in two columns on mobile
+    height: 250px;
+    position: relative;
 
-  //   @include bp(m) {
-  //     width: 30%;
-  //   }
-  // }
+    @include bp(l) {
+      height: 500px;
+    }
+
+    .content {
+      height: 50%;
+      overflow: hidden;
+
+      @include bp(l) {
+        height: 80%;
+      }
+    }
+
+    .delete {
+      bottom: 20px;
+      left: 20px;
+      position: absolute;
+    }
+
+    &__spacing {
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
