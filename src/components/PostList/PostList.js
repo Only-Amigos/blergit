@@ -5,6 +5,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 
+import SocialBar from '../SocialBar/SocialBar';
+
 class PostList extends Component {
   handleDeletePost = (id) => {
     this.props.deletePost(id);
@@ -27,6 +29,8 @@ class PostList extends Component {
 
                     <p className='content is-size-6 has-text-grey-dark'>{post.content}</p>
                   </Link>
+
+                  <SocialBar />
                 </div>
 
                 <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
