@@ -1,85 +1,82 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class SignIn extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      password: '',
-      firstName: '',
-      lastName: ''
-    };
-  };
+const SignUp = () => {
+  const [inputs, setInputs] = useState('');
 
-  handleInputChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value,
+  const handleInputChange = (e) => {
+    setInputs({...inputs,
+      [e.target.id]: e.target.value
     });
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Signnnning Up')
+    console.log(inputs)
   };
 
-  render() {
-    return (
-      <div>
-        <h1>Sign Up</h1>
+  return (
+    <div>
+      <h1>Sign Up</h1>
 
-        <form onSubmit={this.handleSubmit} className='sign-in-form'>
-          <div className='field'>
-            <label htmlFor='firstname' className='label'>First Name</label>
-            <div className='control'>
-              <input
-                type='text'
-                id='firstname'
-                className='input'
-                placeholder='Enter First Name'
-                onChange={this.handleInputChange}/>
-            </div>
-          </div>
-          <div className='field'>
-            <label htmlFor='lastname' className='label'>Last Name</label>
-            <div className='control'>
-              <input
-                type='text'
-                id='lastname'
-                className='input'
-                placeholder='Enter Last Name'
-                onChange={this.handleInputChange}/>
-            </div>
-          </div>
-          <div className='field'>
-            <label htmlFor='email' className='label'>Email</label>
-            <div className='control'>
-              <input
-                type='email'
-                id='email'
-                className='input'
-                placeholder='Enter Email'
-                onChange={this.handleInputChange}/>
-            </div>
-          </div>
-          <div className='field'>
-            <label htmlFor='password' className='label'>Password</label>
-            <div className='control'>
-              <input
-                type='password'
-                id='password'
-                className='input'
-                placeholder='Enter Password'
-                onChange={this.handleInputChange}/>
-            </div>
-          </div>
-
+      <form onSubmit={handleSubmit} className='sign-in-form'>
+        <div className='field'>
+          <label htmlFor='firstName' className='label'>First Name</label>
           <div className='control'>
-            <button className='button is-info'>Sign Up</button>
+            <input
+              type='text'
+              id='firstName'
+              className='input'
+              placeholder='Enter First Name'
+              onChange={handleInputChange}
+              required />
           </div>
-        </form>
-      </div>
-    )
-  }
+        </div>
+        <div className='field'>
+          <label htmlFor='lastName' className='label'>Last Name</label>
+          <div className='control'>
+            <input
+              type='text'
+              id='lastName'
+              className='input'
+              placeholder='Enter Last Name'
+              onChange={handleInputChange}
+              required />
+          </div>
+        </div>
+        <div className='field'>
+          <label htmlFor='email' className='label'>Email</label>
+          <div className='control'>
+            <input
+              type='email'
+              id='email'
+              className='input'
+              autocomplete='e-mail'
+              placeholder='Enter Email'
+              onChange={handleInputChange}
+              required />
+          </div>
+        </div>
+        <div className='field'>
+          <label htmlFor='password' className='label'>Password</label>
+          <div className='control'>
+            <input
+              type='password'
+              id='password'
+              className='input'
+              autocomplete='current-password'
+              placeholder='Enter Password'
+              onChange={handleInputChange}/>
+          </div>
+        </div>
+
+        <div className='control'>
+          <button className='button is-info'>Sign Up</button>
+        </div>
+      </form>
+    </div>
+  )
 }
 
-export default SignIn;
+
+export default SignUp;
