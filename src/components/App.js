@@ -18,6 +18,8 @@ import PostList from './PostList/PostList';
 import Post from './PostList/Post';
 import Profile from './Profile/Profile';
 import About from './About/About';
+import SignIn from './Auth/SignIn';
+import SignUp from './Auth/SignUp';
 
 class App extends Component {
 
@@ -35,6 +37,8 @@ class App extends Component {
                 <Route path='/create-post' component={CreatePost} />
                 <Route exact path='/posts/' component={PostList} />
                 <Route path='/posts/:id' component={Post} />
+                <Route path='/signin' component={SignIn} />
+                <Route path='/signup' component={SignUp} />
             </Switch>
           </div>
         </section>
