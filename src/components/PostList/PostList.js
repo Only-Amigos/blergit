@@ -30,7 +30,7 @@ class PostList extends Component {
                     <p className='content is-size-6 has-text-grey-dark'>{post.content}</p>
                   </Link>
 
-                  <SocialBar />
+                  <SocialBar post={post} />
                 </div>
 
                 <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>

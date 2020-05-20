@@ -1,9 +1,5 @@
 const initialState = {
-  posts: [
-    {id: 1, title: 'Title one', content: 'Some content lorem ipsum'},
-    {id: 2, title: 'Title two', content: 'Some more content lorem ipsum'},
-    {id: 3, title: 'Title three', content: 'Yet more content lorem ipsum'}
-  ]
+  posts: []
 };
 
 const postReducer = (state = initialState, action) => {
@@ -19,6 +15,12 @@ const postReducer = (state = initialState, action) => {
       return state;
     case 'DELETE_POST_ERROR':
       console.log('Error deleting post', action.err);
+      return state;
+    case 'ADD_UPDOOT':
+      console.log('Added updoot!');
+      return state;
+    case 'UPDOOT_ERROR':
+      console.log('Error adding updoot', action.err);
       return state;
     default:
       return state;
