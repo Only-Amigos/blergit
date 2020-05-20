@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 const SignUp = () => {
-  const [inputs, setInputs] = useState('');
+  const [credentials, setCredentials] = useState('');
 
   const handleInputChange = (e) => {
-    setInputs({...inputs,
+    setCredentials({...credentials,
       [e.target.id]: e.target.value
     });
   };
@@ -12,7 +12,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Signnnning Up')
-    console.log(inputs)
+    console.log(credentials)
   };
 
   return (
@@ -51,7 +51,7 @@ const SignUp = () => {
               type='email'
               id='email'
               className='input'
-              autocomplete='e-mail'
+              autoComplete='e-mail'
               placeholder='Enter Email'
               onChange={handleInputChange}
               required />
@@ -64,7 +64,7 @@ const SignUp = () => {
               type='password'
               id='password'
               className='input'
-              autocomplete='current-password'
+              autoComplete='current-password'
               placeholder='Enter Password'
               onChange={handleInputChange}/>
           </div>
