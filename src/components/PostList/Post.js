@@ -5,6 +5,7 @@ import { compose } from 'redux';
 
 const Post = (props) => {
   const { post } = props;
+
   if (post) {
     return (
       <li>

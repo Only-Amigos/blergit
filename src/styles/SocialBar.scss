@@ -1,0 +1,12 @@
+.social-bar {
+  align-items: center;
+  display: flex;
+
+  &__liked {
+    cursor: pointer;
+  }
+
+  &__email {
+    cursor: pointer;
+  }
+}
