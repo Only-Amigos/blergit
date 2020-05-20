@@ -5,6 +5,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 
+import SocialBar from '../SocialBar/SocialBar';
+
 class PostList extends Component {
   handleDeletePost = (id) => {
     this.props.deletePost(id);
@@ -12,22 +14,30 @@ class PostList extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Posts:</h3>
+      <div className='postlist'>
+        <h3 className='has-text-centered is-size-4'>Posts:</h3>
 
-        <ul>
+        <div className='postlist-wrap columns'>
           {this.props.posts && this.props.posts.map(post => {
             return (
-              <Link to={`/posts/${post.id}`} key={post.id}>
-                <li key={post.id}>
-                 <h4>{post.title}</h4>
-                 <p>{post.content}</p>
-                 <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
-               </li>
-              </Link>
+              <div className='postlist-post column is-4' key={post.id}>
+                <div className="box postlist-post__spacing">
+                  <Link to={`/posts/${post.id}`}>
+                    <h4 className='title is-size-5 has-text-weight-medium has-text-black-ter'>{post.title}</h4>
+
+                    {post.createdAt ? <p className="date-time is-size-6 has-text-grey">Posted at {post.createdAt}</p> : null}
+
+                    <p className='content is-size-6 has-text-grey-dark'>{post.content}</p>
+                  </Link>
+
+                  <SocialBar post={post} />
+                </div>
+
+                <span className='delete' onClick={this.handleDeletePost.bind(this, post.id)}></span>
+              </div>
             )
           })}
-        </ul>
+        </div>
       </div>
     )
   }

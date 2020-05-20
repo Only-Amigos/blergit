@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { createPost } from '../../store/actions/postsActions';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -9,24 +10,30 @@ class CreatePost extends Component {
     super();
     this.state = {
       title: '',
-      content: ''
+      titleValue: '',
+      content: '',
+      contentValue: '',
+      postDate: ''
     };
   };
 
   handleInputChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
+      [`${e.target.id}Value`]: e.target.value
     });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({
+      titleValue: '',
+      contentValue: '',
+      postDate: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
     this.props.createPost(this.state);
   };
-  componentDidMount() {
-
-    // this.props.createPost(this.state);
-  }
 
   render() {
     return (
@@ -34,8 +41,17 @@ class CreatePost extends Component {
         <h1>Welcome to the CreatePost page</h1>
 
         <form onSubmit={this.handleSubmit} className='new-post-form'>
-          <input onChange={this.handleInputChange} type='text' id='title'/>
-          <textarea onChange={this.handleInputChange} id='content' cols='50' rows='10'></textarea>
+          <input
+            type='text'
+            id='title'
+            onChange={this.handleInputChange}
+            value={this.state.titleValue}/>
+          <textarea
+            id='content'
+            cols='50'
+            rows='10'
+            onChange={this.handleInputChange}
+            value={this.state.contentValue}></textarea>
           <div className='control'>
             <button className='button'>SUBMIT</button>
           </div>

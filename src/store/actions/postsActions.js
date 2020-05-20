@@ -2,10 +2,13 @@ const createPost = (post) => {
   return (dispatch, getState, {getFirebase, getFirestore}) => {
     //Make async call(s) to DB
     const firestore = getFirestore();
+    const computerDate = new Date();
+    const readableDate = computerDate.toLocaleDateString();
+    const readableTime = computerDate.toLocaleTimeString();
 
     firestore.collection('posts').add({
       ...post,
-      createdAt: new Date()
+      createdAt: `${readableTime} on ${readableDate}`
     }).then(() => {
       dispatch({
         type: 'CREATE_POST',
@@ -20,8 +23,8 @@ const createPost = (post) => {
   }
 }
 
-const deletePost = (id, post) => {
-  return (dispatch, getState, {getFirebase, getFirestore}) => {
+const deletePost = (id) => {
+  return (dispatch, getState, {getFirestore}) => {
     //Make async call(s) to DB
     const firestore = getFirestore();
 
@@ -39,4 +42,25 @@ const deletePost = (id, post) => {
   }
 }
 
-export { createPost, deletePost };
+const increaseUpdoot = (id, post, updoots) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+
+    firestore.collection('posts').doc(id).set({
+      ...post,
+      updoots: updoots
+    })
+    .then(() => {
+      dispatch({
+        type: 'ADD_UPDOOT'
+      })
+    }).catch((err) => {
+      dispatch({
+        type: 'UPDOOT_ERROR',
+        err
+      })
+    });
+  }
+}
+
+export { createPost, deletePost, increaseUpdoot };

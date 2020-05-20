@@ -5,11 +5,12 @@ import { compose } from 'redux';
 
 const Post = (props) => {
   const { post } = props;
+
   if (post) {
     return (
       <li>
-        <h4>{post.title}</h4>
-        <p>{post.content}</p>
+        <h4 className='is-size-5 has-text-black-ter'>{post.title}</h4>
+        <p className='is-size-6 has-text-grey-dark'>{post.content}</p>
       </li>
     )
   } else {
@@ -34,3 +35,4 @@ export default compose(
     {collection: 'posts'}
   ])
 )(Post)
+
