@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions.js';
 
 const SignIn = (props) => {
-  const [credentials, setCredentials] = useState('');
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: ''
+  });
 
   const handleInputChange = (e) => {
     setCredentials({...credentials,
@@ -14,6 +17,10 @@ const SignIn = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.signIn(credentials);
+    setCredentials({...credentials,
+      email: '',
+      password: ''
+    });
   };
 
   return (
@@ -32,7 +39,8 @@ const SignIn = (props) => {
               className='input'
               autoComplete='e-mail'
               placeholder='Enter Email'
-              onChange={handleInputChange}/>
+              onChange={handleInputChange}
+              value={credentials.email}/>
           </div>
         </div>
         <div className='field'>
@@ -44,7 +52,8 @@ const SignIn = (props) => {
               className='input'
               autoComplete='new-password'
               placeholder='Enter Password'
-              onChange={handleInputChange}/>
+              onChange={handleInputChange}
+              value={credentials.password}/>
           </div>
         </div>
         {/* Display error message when login failed  */}

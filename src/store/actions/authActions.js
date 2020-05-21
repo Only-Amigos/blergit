@@ -1,5 +1,5 @@
 const signIn = (credentials) => {
-  return (dispatch, getState, {getFirebase, getFirestore}) => {
+  return (dispatch, getState, {getFirebase}) => {
     //Make async call(s) to auth Firestore
     const firebase = getFirebase();
     console.log(credentials);
@@ -20,5 +20,16 @@ const signIn = (credentials) => {
   }
 }
 
+const signOut = () => {
+  return (dispatch, getState, {getFirebase}) => {
+    const firebase = getFirebase();
+    firebase.auth().signOut()
+    .then(() => {
+      dispatch({
+        type: 'SIGNOUT_SUCCESS'
+      })
+    })
+  }
+}
 
-export { signIn };
+export { signIn, signOut };

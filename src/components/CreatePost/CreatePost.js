@@ -10,9 +10,7 @@ class CreatePost extends Component {
     super();
     this.state = {
       title: '',
-      titleValue: '',
       content: '',
-      contentValue: '',
       postDate: ''
     };
   };
@@ -27,12 +25,13 @@ class CreatePost extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({
-      titleValue: '',
-      contentValue: '',
       postDate: firebase.firestore.FieldValue.serverTimestamp()
     });
-
     this.props.createPost(this.state);
+    this.setState({
+      title: '',
+      content: '',
+    });
   };
 
   render() {
@@ -45,13 +44,13 @@ class CreatePost extends Component {
             type='text'
             id='title'
             onChange={this.handleInputChange}
-            value={this.state.titleValue}/>
+            value={this.state.title}/>
           <textarea
             id='content'
             cols='50'
             rows='10'
             onChange={this.handleInputChange}
-            value={this.state.contentValue}></textarea>
+            value={this.state.content}></textarea>
           <div className='control'>
             <button className='button'>SUBMIT</button>
           </div>

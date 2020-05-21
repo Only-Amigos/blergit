@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOut } from '../../store/actions/authActions.js';
 
 class Navbar extends Component {
   constructor(props) {
@@ -70,6 +72,10 @@ class Navbar extends Component {
               <div className='navbar-item'>
                 <Link to='/about'>About</Link>
               </div>
+
+              <div className='navbar-item'>
+                <button className='sign-out-btn' onClick={this.props.signOut}>Sign Out</button>
+              </div>
             </div>
           </div>
         </nav>
@@ -78,4 +84,10 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Navbar)
