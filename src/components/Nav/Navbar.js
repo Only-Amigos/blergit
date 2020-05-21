@@ -14,7 +14,6 @@ class Navbar extends Component {
   handleMenuVizClick = () => {
     const doesShow = this.state.menuViz;
     this.setState({menuViz: !doesShow});
-    console.log(this.state.menuViz);
   }
 
   render() {
@@ -32,6 +31,12 @@ class Navbar extends Component {
           <li>
             <Link className='is-size-6 has-text-grey-dark' to='/about'>About</Link>
           </li>
+          <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
+          </li>
+          <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
+          </li>
         </ul>
       )
     }
@@ -41,13 +46,13 @@ class Navbar extends Component {
         <nav className='navbar' role='navigation' aria-label='main navigation'>
           <div className='navbar-brand'>
             <div className='navbar-item'>
-              <a href='/'>
+              <Link to='/'>
                 <h1 className='title'>Blergit</h1>
-              </a>
+              </Link>
             </div>
 
             {/* Hamburger menu */}
-            <a role='button' className='navbar-burger'
+            <button  className='navbar-burger'
             aria-label='menu'
             aria-expanded={this.state.menuViz}
             onClick={this.handleMenuVizClick}>
@@ -55,7 +60,7 @@ class Navbar extends Component {
               <span aria-hidden='true'></span>
               <span aria-hidden='true'></span>
             {mobileNavMenu}
-            </a>
+            </button>
 
           </div>
 
@@ -71,6 +76,14 @@ class Navbar extends Component {
 
               <div className='navbar-item'>
                 <Link to='/about'>About</Link>
+              </div>
+
+              <div className='navbar-item'>
+                <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
+              </div>
+
+              <div className='navbar-item'>
+                <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
               </div>
 
               <div className='navbar-item'>

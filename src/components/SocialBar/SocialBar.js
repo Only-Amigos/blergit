@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -25,9 +25,14 @@ const SocialBar = (props) => {
         onClick={handleUpdoot}>
         <span>&#x21d1;</span>
       </p>
+
       <p className='is-size-6 has-text-grey-dark'>
-        {post.updoots ? post.updoots : '0'} </p>
-      <p className="social-bar__email is-size-4 has-text-grey-dark">&#x2709;</p>
+        {post.updoots ? post.updoots : '0'}
+      </p>
+
+      <a href={'mailto:yourbuddy@example.com?subject=' +
+       post.title + '&body=' +
+       post.content} target='_blank' rel='noopener noreferrer'>&#x2709;</a>
     </div>
   )
 }
