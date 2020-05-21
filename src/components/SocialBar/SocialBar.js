@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { increaseUpdoot } from '../../store/actions/postsActions';
+import greenUpArrow from '../../assets/Green-Up-Arrow.svg';
+import emailLogo from '../../assets/email_envelope.svg';
+import twitterLogo from '../../assets/Twitter_Logo_WhiteOnBlue.svg';
 
 const SocialBar = (props) => {
   const {post} = props;
@@ -19,21 +22,40 @@ const SocialBar = (props) => {
     props.increaseUpdoot(post.id, post, updoots);
   }
 
+  const makeTweetfromPost = () => {
+    const thisPageUrl = encodeURIComponent(window.location.href);
+
+    window.open('https://twitter.com/share?url='+ encodeURIComponent(thisPageUrl)+'&text='+post.content, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;
+  }
+
+
   return (
-    <div className='social-bar'>
-      <p className='social-bar__liked is-size-4 has-text-grey-dark'
-        onClick={handleUpdoot}>
-        <span>&#x21d1;</span>
-      </p>
+    <ul className='social-bar'>
+      <li className='updoots'>
+        <p className='updoots__liked is-size-4 has-text-grey-dark'
+          onClick={handleUpdoot}>
+          <img className='green-up-arrow' src={greenUpArrow} alt='Click here to upvote this post'/>
+        </p>
 
-      <p className='is-size-6 has-text-grey-dark'>
-        {post.updoots ? post.updoots : '0'}
-      </p>
+        <p className='is-size-5 has-text-grey-dark'>
+          {post.updoots ? post.updoots : '0'}
+        </p>
+      </li>
 
-      <a href={'mailto:yourbuddy@example.com?subject=' +
-       post.title + '&body=' +
-       post.content} target='_blank' rel='noopener noreferrer'>&#x2709;</a>
-    </div>
+      <li>
+        <a href={'mailto:yourbuddy@example.com?subject=' +
+         post.title + '&body=' +
+         post.content} target='_blank' rel='noopener noreferrer'>
+          <img className='email-logo' src={emailLogo} alt='Email this post'/>
+        </a>
+      </li>
+
+       <li>
+         <button href='javascript:void(0)' onClick={makeTweetfromPost}>
+           <img className='twitter-logo' src={twitterLogo} alt='Tweet this post out'/>
+         </button>
+       </li>
+    </ul>
   )
 }
 

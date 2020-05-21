@@ -1,12 +1,34 @@
 .social-bar {
   align-items: center;
   display: flex;
+  width: 50%;
 
-  &__liked {
-    cursor: pointer;
+  li {
+    margin-right: 15px;
   }
 
-  &__email {
-    cursor: pointer;
+  li,
+  li a,
+  button {
+    align-items: center;
+    display: flex;
+  }
+
+  .updoots {
+    &__liked {
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  }
+
+  button {
+    background-color: #fff;
+    border: none;
+  }
+
+  .green-up-arrow,
+  .email-logo,
+  .twitter-logo {
+    width: 20px;
   }
 }
