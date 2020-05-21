@@ -24,7 +24,6 @@ import SignUp from './Auth/SignUp';
 class App extends Component {
 
   render() {
-    // console.log(this.props.posts[0])
     return (
       <Router>
         <Navbar />

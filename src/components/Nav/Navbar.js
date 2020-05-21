@@ -78,17 +78,23 @@ class Navbar extends Component {
                 <Link to='/about'>About</Link>
               </div>
 
-              <div className='navbar-item'>
-                <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
-              </div>
+              {this.props.isLoggedIn ? null :
+                <div className='navbar-item'>
+                  <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
+                </div>
+              }
 
-              <div className='navbar-item'>
-                <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
-              </div>
+              {this.props.isLoggedIn ? null :
+                <div className='navbar-item'>
+                  <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
+                </div>
+              }
 
-              <div className='navbar-item'>
-                <button className='sign-out-btn' onClick={this.props.signOut}>Sign Out</button>
-              </div>
+              {this.props.isLoggedIn ?
+                <div className='navbar-item'>
+                  <button className='sign-out-btn' onClick={this.props.signOut}>Sign Out</button>
+                </div>
+              : null}
             </div>
           </div>
         </nav>
@@ -97,10 +103,17 @@ class Navbar extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.auth.isLoggedIn,
+    authError: state.auth.authError
+  }
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: () => dispatch(signOut())
   }
 }
 
-export default connect(null, mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
