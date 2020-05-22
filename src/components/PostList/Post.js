@@ -3,15 +3,22 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
+import SocialBar from '../SocialBar/SocialBar';
+
 const Post = (props) => {
   const { post } = props;
 
   if (post) {
     return (
-      <li>
-        <h4 className='is-size-5 has-text-black-ter'>{post.title}</h4>
-        <p className='is-size-6 has-text-grey-dark'>{post.content}</p>
-      </li>
+      <div className="box postlist-post__spacing">
+        <h4 className='title is-size-5 has-text-weight-medium has-text-black-ter'>{post.title}</h4>
+
+        {post.createdAt ? <p className="date-time is-size-6 has-text-grey">Posted at {post.createdAt}</p> : null}
+
+        <p className='content is-size-6 has-text-grey-dark'>{post.content}</p>
+
+        <SocialBar post={post} />
+      </div>
     )
   } else {
     return (
@@ -35,4 +42,3 @@ export default compose(
     {collection: 'posts'}
   ])
 )(Post)
-
