@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { createPost } from '../../store/actions/postsActions';
@@ -11,7 +12,8 @@ class CreatePost extends Component {
     this.state = {
       title: '',
       content: '',
-      postDate: ''
+      postDate: '',
+      toHomepage: false
     };
   };
 
@@ -31,10 +33,14 @@ class CreatePost extends Component {
     this.setState({
       title: '',
       content: '',
+      toHomepage: true
     });
   };
 
   render() {
+    if (this.state.toHomepage === true) {
+      return <Redirect to='/' />
+    }
     return (
       <div className='box create-post'>
         <h3 className='title is-size-4'>Create your Blergit post</h3>
