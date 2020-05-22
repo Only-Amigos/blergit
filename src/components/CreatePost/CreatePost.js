@@ -36,23 +36,37 @@ class CreatePost extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Welcome to the CreatePost page</h1>
+      <div className='box create-post'>
+        <h3 className='title is-size-4'>Create your Blergit post</h3>
 
         <form onSubmit={this.handleSubmit} className='new-post-form'>
-          <input
-            type='text'
-            id='title'
-            onChange={this.handleInputChange}
-            value={this.state.title}/>
-          <textarea
-            id='content'
-            cols='50'
-            rows='10'
-            onChange={this.handleInputChange}
-            value={this.state.content}></textarea>
-          <div className='control'>
-            <button className='button'>SUBMIT</button>
+          <div className='field'>
+          <label htmlFor='title' className='label'>Title</label>
+            <div className='control'>
+              <input
+                type='text'
+                id='title'
+                className='input'
+                onChange={this.handleInputChange}
+                value={this.state.title}/>
+              </div>
+          </div>
+          <div className='field'>
+            <label htmlFor='content' className='label'>Content</label>
+            <div className='control'>
+              <textarea
+                id='content'
+                className='textarea'
+                cols='50'
+                rows='10'
+                onChange={this.handleInputChange}
+                value={this.state.content}></textarea>
+            </div>
+          </div>
+          <div className='field'>
+            <div className='control'>
+              <button className='button is-info'>SUBMIT</button>
+            </div>
           </div>
         </form>
       </div>
