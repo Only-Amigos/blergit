@@ -16,8 +16,8 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
+    <div className='box auth-forms'>
+      <h3 className='title is-size-4'>Sign Up</h3>
 
       <form onSubmit={handleSubmit} className='sign-in-form'>
         <div className='field'>

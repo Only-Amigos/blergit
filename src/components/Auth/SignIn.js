@@ -24,8 +24,8 @@ const SignIn = (props) => {
   };
 
   return (
-    <div>
-      <h1>Sign In</h1>
+    <div className='box auth-forms'>
+      <h3 className='title is-size-4'>Sign In</h3>
       {/* Displaying welcome message when logged in successfully */}
       {props.isLoggedIn ? <p>WELCOME</p> : null}
 
