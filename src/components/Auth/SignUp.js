@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { signUp } from '../../store/actions/authActions';
 
 const SignUp = () => {
   const [credentials, setCredentials] = useState('');
@@ -11,6 +13,8 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    signUp(credentials);
+
     console.log('Signnnning Up')
     console.log(credentials)
   };
@@ -78,5 +82,16 @@ const SignUp = () => {
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
