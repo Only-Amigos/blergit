@@ -1,5 +1,3 @@
-// import { response } from 'express';
-
 const signIn = (credentials) => {
   return (dispatch, getState, {getFirebase}) => {
     //Make async call(s) to auth Firestore
@@ -47,8 +45,7 @@ const signUp = (newUser) => {
       .doc(response.user.uid)
       .set({
         firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        initials: newUser.firstName[0] + newUser.lastName[0]
+        lastName: newUser.lastName
       })
     }).then(() => {
       dispatch({type: 'SIGNUP_SUCCESS'})

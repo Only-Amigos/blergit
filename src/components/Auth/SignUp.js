@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signUp } from '../../store/actions/authActions';
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [credentials, setCredentials] = useState('');
 
   const handleInputChange = (e) => {
@@ -13,10 +13,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUp(credentials);
-
-    console.log('Signnnning Up')
-    console.log(credentials)
+    props.signUp(credentials);
   };
 
   return (
