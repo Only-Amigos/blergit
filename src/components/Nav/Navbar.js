@@ -78,19 +78,19 @@ class Navbar extends Component {
                 <Link to='/about'>About</Link>
               </div>
 
-              {this.props.isLoggedIn ? null :
+              {this.props.auth.uid ? null :
                 <div className='navbar-item'>
                   <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
                 </div>
               }
 
-              {this.props.isLoggedIn ? null :
+              {this.props.auth.uid ? null :
                 <div className='navbar-item'>
                   <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
                 </div>
               }
 
-              {this.props.isLoggedIn ?
+              {this.props.auth.uid ?
                 <div className='navbar-item'>
                   <button className='sign-out-btn' onClick={this.props.signOut}>Sign Out</button>
                 </div>
@@ -106,7 +106,8 @@ class Navbar extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.auth.isLoggedIn,
-    authError: state.auth.authError
+    authError: state.auth.authError,
+    auth: state.firebase.auth
   }
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions.js';
 
@@ -22,6 +23,10 @@ const SignIn = (props) => {
       password: ''
     });
   };
+
+  if (props.auth.uid) {
+    return <Redirect to='/' />
+  }
 
   return (
     <div className='box auth-forms'>
@@ -70,7 +75,8 @@ const SignIn = (props) => {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.auth.isLoggedIn,
-    authError: state.auth.authError
+    authError: state.auth.authError,
+    auth: state.firebase.auth
   }
 };
 

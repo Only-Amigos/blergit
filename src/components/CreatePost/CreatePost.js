@@ -13,14 +13,15 @@ class CreatePost extends Component {
       title: '',
       content: '',
       postDate: '',
-      toHomepage: false
+      toHomepage: false,
+      userId: ''
     };
   };
 
   handleInputChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
-      [`${e.target.id}Value`]: e.target.value
+      userId: this.props.auth.uid
     });
   };
 
@@ -33,14 +34,20 @@ class CreatePost extends Component {
     this.setState({
       title: '',
       content: '',
-      toHomepage: true
+      toHomepage: true,
+      userId: this.props.auth.uid
     });
   };
 
   render() {
+    if (!this.props.auth.uid) {
+      return <Redirect to='/signin' />
+    }
+
     if (this.state.toHomepage === true) {
       return <Redirect to='/' />
     }
+
     return (
       <div className='box create-post'>
         <h3 className='title is-size-4'>Create your Blergit post</h3>
@@ -82,7 +89,8 @@ class CreatePost extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.firestore.ordered.posts || state.posts.posts
+    posts: state.firestore.ordered.posts || state.posts.posts,
+    auth: state.firebase.auth
   }
 };
 
