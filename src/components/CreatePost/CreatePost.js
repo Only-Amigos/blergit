@@ -40,9 +40,14 @@ class CreatePost extends Component {
   };
 
   render() {
+    if (!this.props.auth.uid) {
+      return <Redirect to='/signin' />
+    }
+
     if (this.state.toHomepage === true) {
       return <Redirect to='/' />
     }
+
     return (
       <div className='box create-post'>
         <h3 className='title is-size-4'>Create your Blergit post</h3>
