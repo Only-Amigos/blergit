@@ -1,4 +1,13 @@
 .create-post {
   max-width: 500px;
   margin: 0 auto;
+
+  progress {
+    margin: 8px 0 20px;
+  }
+
+  span {
+    font-weight: 400;
+    white-space: pre;
+  }
 }

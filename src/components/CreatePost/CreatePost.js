@@ -78,7 +78,9 @@ class CreatePost extends Component {
             </div>
           </div>
           <div className='field'>
-            <label htmlFor='title' className='label'>Image url</label>
+            <label htmlFor='imgUrl' className='label'>Image url
+              <span className='has-text-grey-light'> (optional)</span>
+            </label>
             <div className='control'>
               <input
                 type='text'
@@ -87,6 +89,22 @@ class CreatePost extends Component {
                 onChange={this.handleInputChange}
                 value={this.state.imgUrl}/>
             </div>
+          </div>
+          <div className="field">
+            <label htmlFor='title' className='label'>Upload image file
+              <span className='has-text-grey-light'> (optional)</span>
+            </label>
+            <label className="file-label">
+              <input
+                type="file"
+                className="file-input" />
+              <span className="file-cta">
+                <span className="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+            <progress className="progress is-link" value="0" max="100">0%</progress>
           </div>
           <div className='field'>
             <div className='control'>
