@@ -51,7 +51,7 @@ const SocialBar = (props) => {
       </li>
 
        <li>
-         <button href='javascript:void(0)' onClick={makeTweetfromPost}>
+         <button onClick={makeTweetfromPost}>
            <img className='twitter-logo' src={twitterLogo} alt='Tweet this post out'/>
          </button>
        </li>
