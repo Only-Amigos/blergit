@@ -14,13 +14,28 @@
       height: 500px;
     }
 
-    .content {
+    // .content {
+    //   height: 50%;
+    //   overflow: hidden;
+
+    //   @include bp(l) {
+    //     height: 80%;
+    //   }
+    // }
+
+    .innerContentWrapper {
+      flex-direction: column;
       height: 50%;
       overflow: hidden;
 
       @include bp(l) {
         height: 80%;
       }
+
+      img {
+        max-width: 100%;
+      }
+
     }
 
     .delete {

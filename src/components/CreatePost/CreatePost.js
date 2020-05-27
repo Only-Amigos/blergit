@@ -12,6 +12,7 @@ class CreatePost extends Component {
     this.state = {
       title: '',
       content: '',
+      imgUrl: '',
       postDate: '',
       toHomepage: false,
       userId: ''
@@ -54,7 +55,7 @@ class CreatePost extends Component {
 
         <form onSubmit={this.handleSubmit} className='new-post-form'>
           <div className='field'>
-          <label htmlFor='title' className='label'>Title</label>
+            <label htmlFor='title' className='label'>Title</label>
             <div className='control'>
               <input
                 type='text'
@@ -62,7 +63,7 @@ class CreatePost extends Component {
                 className='input'
                 onChange={this.handleInputChange}
                 value={this.state.title}/>
-              </div>
+            </div>
           </div>
           <div className='field'>
             <label htmlFor='content' className='label'>Content</label>
@@ -74,6 +75,17 @@ class CreatePost extends Component {
                 rows='10'
                 onChange={this.handleInputChange}
                 value={this.state.content}></textarea>
+            </div>
+          </div>
+          <div className='field'>
+            <label htmlFor='title' className='label'>Image url</label>
+            <div className='control'>
+              <input
+                type='text'
+                id='imgUrl'
+                className='input'
+                onChange={this.handleInputChange}
+                value={this.state.imgUrl}/>
             </div>
           </div>
           <div className='field'>

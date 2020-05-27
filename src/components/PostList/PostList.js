@@ -26,7 +26,12 @@ const PostList = (props) => {
 
                   {post.createdAt ? <p className="date-time is-size-6 has-text-grey">Posted at {post.createdAt}</p> : null}
 
-                  <p className='content is-size-6 has-text-grey-dark'>{post.content}</p>
+                  {/* <p className='content is-size-6 has-text-grey-dark'>{post.content}</p> */}
+                  <div className='innerContentWrapper'>
+                    <p className='content is-size-6 has-text-grey-dark'>{post.content}</p>
+                    {post.imgUrl ? <img className='post-image' src={post.imgUrl} alt={post.title}/> : null}
+                  </div>
+
                 </Link>
 
                 <SocialBar post={post} />
