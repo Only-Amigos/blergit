@@ -26,6 +26,12 @@ class CreatePost extends Component {
     });
   };
 
+  handleUploadImg = (e) => {
+    const file = e.target.files[0];
+    const storageRef = firebase.storage().ref(`/images/${file.name}`);
+    storageRef.put(file);
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({
@@ -97,7 +103,8 @@ class CreatePost extends Component {
             <label className="file-label">
               <input
                 type="file"
-                className="file-input" />
+                className="file-input"
+                onChange={this.handleUploadImg} />
               <span className="file-cta">
                 <span className="file-label">
                   Choose a file…
