@@ -2,7 +2,7 @@ const signIn = (credentials) => {
   return (dispatch, getState, {getFirebase}) => {
     //Make async call(s) to auth Firestore
     const firebase = getFirebase();
-    console.log(credentials);
+
     firebase.auth().signInWithEmailAndPassword(
       credentials.email,
       credentials.password

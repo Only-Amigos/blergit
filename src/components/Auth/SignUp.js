@@ -6,7 +6,7 @@ import { signUp } from '../../store/actions/authActions';
 const SignUp = (props) => {
   const [credentials, setCredentials] = useState('');
 
-  const handleInputChange = (e) => {
+  const handleSignUpInputChange = (e) => {
     setCredentials({...credentials,
       [e.target.id]: e.target.value
     });
@@ -34,7 +34,7 @@ const SignUp = (props) => {
               id='firstName'
               className='input'
               placeholder='Enter First Name'
-              onChange={handleInputChange}
+              onChange={handleSignUpInputChange}
               required />
           </div>
         </div>
@@ -46,7 +46,7 @@ const SignUp = (props) => {
               id='lastName'
               className='input'
               placeholder='Enter Last Name'
-              onChange={handleInputChange}
+              onChange={handleSignUpInputChange}
               required />
           </div>
         </div>
@@ -59,7 +59,7 @@ const SignUp = (props) => {
               className='input'
               autoComplete='e-mail'
               placeholder='Enter Email'
-              onChange={handleInputChange}
+              onChange={handleSignUpInputChange}
               required />
           </div>
         </div>
@@ -72,7 +72,7 @@ const SignUp = (props) => {
               className='input'
               autoComplete='current-password'
               placeholder='Enter Password'
-              onChange={handleInputChange}/>
+              onChange={handleSignUpInputChange}/>
           </div>
         </div>
 

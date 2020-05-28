@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signIn } from '../../store/actions/authActions.js';
+import { signIn } from '../../store/actions/authActions';
 
 const SignIn = (props) => {
   const [credentials, setCredentials] = useState({
@@ -9,7 +9,7 @@ const SignIn = (props) => {
     password: ''
   });
 
-  const handleInputChange = (e) => {
+  const handleSignInInputChange = (e) => {
     setCredentials({...credentials,
       [e.target.id]: e.target.value
     });
@@ -44,7 +44,7 @@ const SignIn = (props) => {
               className='input'
               autoComplete='e-mail'
               placeholder='Enter Email'
-              onChange={handleInputChange}
+              onChange={handleSignInInputChange}
               value={credentials.email}/>
           </div>
         </div>
@@ -57,7 +57,7 @@ const SignIn = (props) => {
               className='input'
               autoComplete='new-password'
               placeholder='Enter Password'
-              onChange={handleInputChange}
+              onChange={handleSignInInputChange}
               value={credentials.password}/>
           </div>
         </div>
