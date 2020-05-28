@@ -45,7 +45,8 @@ const signUp = (newUser) => {
       .doc(response.user.uid)
       .set({
         firstName: newUser.firstName,
-        lastName: newUser.lastName
+        lastName: newUser.lastName,
+        initials: newUser.firstName[0] + newUser.lastName[0]
       })
     }).then(() => {
       dispatch({type: 'SIGNUP_SUCCESS'})

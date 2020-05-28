@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/actions/authActions';
 
 const SignUp = (props) => {
@@ -15,6 +16,10 @@ const SignUp = (props) => {
     e.preventDefault();
     props.signUp(credentials);
   };
+
+  if (props.auth.uid) {
+    return <Redirect to='/' />
+  }
 
   return (
     <div className='box auth-forms'>

@@ -70,30 +70,34 @@ const Navbar = (props) => {
             </div>
 
             <div className='navbar-item'>
-              <Link to='/profile'>Profile</Link>
-            </div>
-
-            <div className='navbar-item'>
               <Link to='/about'>About</Link>
             </div>
 
-            {props.auth.uid ? null :
-              <div className='navbar-item'>
-                <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
-              </div>
-            }
+            <div className="auth-links">
+              {props.auth.uid ? null :
+                <div className='navbar-item'>
+                  <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
+                </div>
+              }
 
-            {props.auth.uid ? null :
-              <div className='navbar-item'>
-                <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
-              </div>
-            }
+              {props.auth.uid ? null :
+                <div className='navbar-item'>
+                  <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
+                </div>
+              }
 
-            {props.auth.uid ?
-              <div className='navbar-item'>
-                <button className='sign-out-btn' onClick={props.signOut}>Sign Out</button>
-              </div>
-            : null}
+              {props.auth.uid ?
+                <div className='navbar-item'>
+                  <button className='sign-out-btn' onClick={props.signOut}>Sign Out</button>
+                </div>
+              : null}
+
+              {props.auth.uid ?
+                <div className='navbar-item'>
+                  <Link to='/profile'>Profile</Link>
+                </div>
+              : null}
+            </div>
           </div>
         </div>
       </nav>

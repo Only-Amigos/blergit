@@ -32,7 +32,10 @@ const PostList = (props) => {
                 <SocialBar post={post} />
               </div>
 
-              <span className='delete' onClick={handleDeletePost.bind(this, post.id)}></span>
+              {props.auth.uid === post.userId ?
+                <span className='delete' onClick={handleDeletePost.bind(this, post.id)}></span>
+                : null
+              }
             </div>
           )
         })}
@@ -43,7 +46,8 @@ const PostList = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.firestore.ordered.posts || state.posts.posts
+    posts: state.firestore.ordered.posts || state.posts.posts,
+    auth: state.firebase.auth
   }
 };
 
