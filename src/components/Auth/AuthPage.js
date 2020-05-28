@@ -34,7 +34,7 @@ const AuthPage = (props) => {
   }
 
   return (
-    <div>
+    <div className='auth-content'>
       <div className='box auth-forms'>
         <h3 className='title is-size-4'>Sign In</h3>
         {/* Displaying welcome message when logged in successfully */}
@@ -75,6 +75,8 @@ const AuthPage = (props) => {
           </div>
         </form>
       </div>
+
+      <h2 className="auth-divider is-size-3 has-text-black-ter has-text-centered">Not a member yet? Sign up below!</h2>
 
       <div className='box auth-forms'>
         <h3 className='title is-size-4'>Sign Up</h3>

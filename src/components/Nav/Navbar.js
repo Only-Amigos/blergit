@@ -25,10 +25,15 @@ const Navbar = (props) => {
           <li>
             <Link className='is-size-6 has-text-grey-dark' to='/create-post'>New Post</Link>
           </li>
-          : null }
-        <li>
-          <Link className='is-size-6 has-text-grey-dark' to='/profile'>Profile</Link>
-        </li>
+        : <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/auth'>New Post</Link>
+          </li>
+        }
+        {props.auth.uid ?
+          <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/profile'>Profile</Link>
+          </li>
+        : null }
         <li>
           <Link className='is-size-6 has-text-grey-dark' to='/about'>About</Link>
         </li>
@@ -39,12 +44,12 @@ const Navbar = (props) => {
         : null}
         {props.auth.uid ? null :
           <li>
-            <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
+            <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign In</Link>
           </li>
         }
         {props.auth.uid ? null :
           <li>
-            <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
+            <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign Up</Link>
           </li>
         }
       </ul>
@@ -80,7 +85,11 @@ const Navbar = (props) => {
               <div className='navbar-item'>
                 <Link to='/create-post'>New Post</Link>
               </div>
-            : null}
+            :
+              <div className='navbar-item'>
+                <Link to='/auth'>New Post</Link>
+              </div>
+            }
 
             <div className='navbar-item'>
               <Link to='/about'>About</Link>
@@ -89,13 +98,13 @@ const Navbar = (props) => {
             <div className="auth-links">
               {props.auth.uid ? null :
                 <div className='navbar-item'>
-                  <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
+                  <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign In</Link>
                 </div>
               }
 
               {props.auth.uid ? null :
                 <div className='navbar-item'>
-                  <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
+                  <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign Up</Link>
                 </div>
               }
 
