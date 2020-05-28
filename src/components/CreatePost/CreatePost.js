@@ -96,22 +96,22 @@ class CreatePost extends Component {
                 value={this.state.imgUrl}/>
             </div>
           </div>
-          <div className="field">
+          <div className='field'>
             <label htmlFor='title' className='label'>Upload image file
               <span className='has-text-grey-light'> (optional)</span>
             </label>
-            <label className="file-label">
+            <label className='file-label'>
               <input
-                type="file"
-                className="file-input"
+                type='file'
+                className='file-input'
                 onChange={this.handleUploadImg} />
-              <span className="file-cta">
-                <span className="file-label">
+              <span className='file-cta'>
+                <span className='file-label'>
                   Choose a file…
                 </span>
               </span>
             </label>
-            <progress className="progress is-link" value="0" max="100">0%</progress>
+            <progress className='progress is-link' value='0' max='100'>0%</progress>
           </div>
           <div className='field'>
             <div className='control'>
