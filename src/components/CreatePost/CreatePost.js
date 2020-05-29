@@ -10,7 +10,7 @@ const CreatePost = (props) => {
   const [postContent, setPostContent] = useState({
     title: '',
     content: '',
-    userId: '',
+    userId: props.auth.uid,
     imgUrl: ''
   });
 
@@ -22,14 +22,9 @@ const CreatePost = (props) => {
     file: null
   });
 
-  // const [postDate, setPostDate] = useState({
-  //   postDate: null
-  // });
-
   const handleInputChange = (e) => {
     setPostContent({...postContent,
-      [e.target.id]: e.target.value,
-      userId: props.auth.uid
+      [e.target.id]: e.target.value
     });
   };
 
@@ -42,10 +37,6 @@ const CreatePost = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // setPostDate({...postDate,
-    //   postDate: firebase.firestore.FieldValue.serverTimestamp()
-    // })
 
     const storageRef = firebase.storage().ref(`/images/${imgFile.file.name}`);
     let uploadTask = storageRef.put(imgFile.file);
@@ -72,12 +63,6 @@ const CreatePost = (props) => {
         });
       });
     });
-
-    // setPostContent({...postContent,
-    //   title: '',
-    //   content: '',
-    //   userId: props.auth.uid
-    // });
 
     setShouldRedirect({...shouldRedirect,
       toHomepage: true,
@@ -122,7 +107,7 @@ const CreatePost = (props) => {
         </div>
         <div className='field'>
           <label htmlFor='imgUrl' className='label'>Image url
-            <span className='has-text-grey-light'> (optional)</span>
+            <span className='optional has-text-grey-light'> (optional)</span>
           </label>
           <div className='control'>
             <input
@@ -135,7 +120,7 @@ const CreatePost = (props) => {
         </div>
         <div className='field'>
           <label htmlFor='title' className='label'>Upload image file
-            <span className='has-text-grey-light'> (optional)</span>
+            <span className='optional has-text-grey-light'> (optional)</span>
           </label>
           <label className='file-label'>
             <input
@@ -148,7 +133,7 @@ const CreatePost = (props) => {
               </span>
             </span>
           </label>
-          <progress className='progress is-link' value='0' max='100'>0%</progress>
+          {/* <progress className='progress is-link' value='0' max='100'>0%</progress> */}
         </div>
         <div className='field'>
           <div className='control'>
