@@ -14,12 +14,17 @@
       height: 500px;
     }
 
-    .content {
+    .innerContentWrapper {
+      flex-direction: column;
       height: 50%;
       overflow: hidden;
 
       @include bp(l) {
         height: 80%;
+      }
+
+      img {
+        max-width: 100%;
       }
     }
 
