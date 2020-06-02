@@ -5,6 +5,7 @@ const createPost = (post) => {
     const computerDate = new Date();
     const readableDate = computerDate.toLocaleDateString();
     const readableTime = computerDate.toLocaleTimeString();
+    console.log(post)
 
     firestore.collection('posts').add({
       ...post,
@@ -17,6 +18,31 @@ const createPost = (post) => {
     }).catch((err) => {
       dispatch({
         type: 'CREATE_POST_ERROR',
+        err
+      })
+    });
+  }
+}
+
+const editPost = (post) => {
+  return (dispatch, getState, {getFirebase, getFirestore}) => {
+    //Make async call(s) to DB
+    const firestore = getFirestore();
+    const computerDate = new Date();
+    const readableDate = computerDate.toLocaleDateString();
+    const readableTime = computerDate.toLocaleTimeString();
+
+    firestore.collection('posts').doc(post.postId).update({
+      ...post,
+      editedAt: `${readableTime} on ${readableDate}`
+    }).then(() => {
+      dispatch({
+        type: 'EDIT_POST',
+        payload: post
+      })
+    }).catch((err) => {
+      dispatch({
+        type: 'EDIT_POST_ERROR',
         err
       })
     });
@@ -63,4 +89,4 @@ const increaseUpdoot = (id, post, updoots) => {
   }
 }
 
-export { createPost, deletePost, increaseUpdoot };
+export { createPost, editPost, deletePost, increaseUpdoot };

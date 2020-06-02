@@ -1,4 +1,11 @@
-.auth-forms {
-  max-width: 500px;
-  margin: 0 auto;
+.auth-content {
+  .auth-forms {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .auth-divider {
+    line-height: 18px;
+    margin: 24px 0;
+  }
 }

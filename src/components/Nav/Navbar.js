@@ -18,24 +18,40 @@ const Navbar = (props) => {
 
   let mobileNavMenu = null;
 
-  if (menuState.dispatchmenuViz) {
+  if (menuState.menuViz) {
     mobileNavMenu = (
       <ul className='burger-dropdown'>
-        <li>
-          <Link className='is-size-6 has-text-grey-dark' to='/create-post'>New Post</Link>
-        </li>
-        <li>
-          <Link className='is-size-6 has-text-grey-dark' to='/profile'>Profile</Link>
-        </li>
+        {props.auth.uid ?
+          <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/create-post'>New Post</Link>
+          </li>
+        : <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/auth'>New Post</Link>
+          </li>
+        }
+        {props.auth.uid ?
+          <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/profile'>Profile</Link>
+          </li>
+        : null }
         <li>
           <Link className='is-size-6 has-text-grey-dark' to='/about'>About</Link>
         </li>
-        <li>
-          <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
-        </li>
-        <li>
-          <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
-        </li>
+        {props.auth.uid ?
+          <li className='is-size-6 has-text-grey-dark'>
+            <button className='sign-out-btn' onClick={props.signOut}>Sign Out</button>
+          </li>
+        : null}
+        {props.auth.uid ? null :
+          <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign In</Link>
+          </li>
+        }
+        {props.auth.uid ? null :
+          <li>
+            <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign Up</Link>
+          </li>
+        }
       </ul>
     )
   }
@@ -65,35 +81,45 @@ const Navbar = (props) => {
 
         <div className='navbar-menu'>
           <div className='navbar-start'>
-            <div className='navbar-item'>
-              <Link to='/create-post'>New Post</Link>
-            </div>
-
-            <div className='navbar-item'>
-              <Link to='/profile'>Profile</Link>
-            </div>
+            {props.auth.uid ?
+              <div className='navbar-item'>
+                <Link to='/create-post'>New Post</Link>
+              </div>
+            :
+              <div className='navbar-item'>
+                <Link to='/auth'>New Post</Link>
+              </div>
+            }
 
             <div className='navbar-item'>
               <Link to='/about'>About</Link>
             </div>
 
-            {props.auth.uid ? null :
-              <div className='navbar-item'>
-                <Link className='is-size-6 has-text-grey-dark' to='/signin'>Sign In</Link>
-              </div>
-            }
+            <div className="auth-links">
+              {props.auth.uid ? null :
+                <div className='navbar-item'>
+                  <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign In</Link>
+                </div>
+              }
 
-            {props.auth.uid ? null :
-              <div className='navbar-item'>
-                <Link className='is-size-6 has-text-grey-dark' to='/signup'>Sign Up</Link>
-              </div>
-            }
+              {props.auth.uid ? null :
+                <div className='navbar-item'>
+                  <Link className='is-size-6 has-text-grey-dark' to='/auth'>Sign Up</Link>
+                </div>
+              }
 
-            {props.auth.uid ?
-              <div className='navbar-item'>
-                <button className='sign-out-btn' onClick={props.signOut}>Sign Out</button>
-              </div>
-            : null}
+              {props.auth.uid ?
+                <div className='navbar-item'>
+                  <button className='sign-out-btn' onClick={props.signOut}>Sign Out</button>
+                </div>
+              : null}
+
+              {props.auth.uid ?
+                <div className='navbar-item'>
+                  <Link to='/profile'>Profile</Link>
+                </div>
+              : null}
+            </div>
           </div>
         </div>
       </nav>

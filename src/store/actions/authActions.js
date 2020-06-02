@@ -2,7 +2,7 @@ const signIn = (credentials) => {
   return (dispatch, getState, {getFirebase}) => {
     //Make async call(s) to auth Firestore
     const firebase = getFirebase();
-    console.log(credentials);
+
     firebase.auth().signInWithEmailAndPassword(
       credentials.email,
       credentials.password
@@ -45,7 +45,8 @@ const signUp = (newUser) => {
       .doc(response.user.uid)
       .set({
         firstName: newUser.firstName,
-        lastName: newUser.lastName
+        lastName: newUser.lastName,
+        initials: newUser.firstName[0] + newUser.lastName[0]
       })
     }).then(() => {
       dispatch({type: 'SIGNUP_SUCCESS'})

@@ -5,6 +5,12 @@ header {
     font-weight: 300;
   }
 
+  .navbar-start {
+    @include bp(l) {
+      width: 100%;
+    }
+  }
+
   .navbar-burger {
     border: none;
     background-color: #fff;
@@ -35,11 +41,18 @@ header {
   }
 
   .sign-out-btn {
+    background-color: inherit;
     border: none;
-    color: #3273dc;
     cursor: pointer;
     font-size: 1em;
     padding: 0;
     text-decoration: none;
   }
+
+  .auth-links {
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+  }
+
 }
